@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# !!!!!!!!!! აპლიკაციაში რომ შეხვიდეთ უნდა გამომიგზავნოთ თქვენი იმეილი რომლითაც დარეგისტრირებული ხართ Spotify-ზე, რათა Spotify Developer Dashboard-ზე დაგამატოთ დეველოპერად. წინააღმდეგ შემთხვევში საიტზე შეხვალთ, მაგრამ ინფორმაციას ვერ დაფეტჩავს. ეს რომ ასე არ მოხდეს მაშინ Spotify-ს უნდა გავუგზავნო მოთხოვნა რომ ჩემს საიტზე შეეძლოთ შემოვიდნენ როგორც იუზერები რის დადასტურებას დრო სჭირდება, და რადგან ფინალურზე დედლაინი გვაქვს ვერ მოესწრება. ამიტომ გთხოვთ სანამ საიტზე შეხვალთ თქვენი იმეილი გამომიგზავნოთ რომლითაც დარეგისტრირებული ხართ Spotify-ზე !!!!!!!!!!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+აპლიკაცია გვეხმარება Spotify API-ს გამოყენებით ვნახოთ ჩვენს მიერ ყველაზე მეტად მოსმენადი ტოპ 10 არტისტი, ტოპ 10 სიმღერა და ასევე ვნახოთ თუ რომელი 10 ალბუმი არის მეტად პოპულარული.
+![image](https://github.com/user-attachments/assets/c373d6ff-7b78-41b8-94ba-bc63a2a9ef3a)    ![image](https://github.com/user-attachments/assets/a8dce05f-751f-4e52-b478-d66d48fe2cd2)     ![image](https://github.com/user-attachments/assets/8549d681-251d-461b-aa94-06c68dabc1c8)
+# Dark Mode: ![image](https://github.com/user-attachments/assets/844726dd-3d49-412c-8d13-7db2203a505d)
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+ავთენთიფიკაციისთვის გამოვიყენე Spotify OAuth (რის გამოც ვერ გამოვიყენე github pages ამიტომ Vercel-ზე დავჰოსთე).
+![image](https://github.com/user-attachments/assets/749b91eb-c998-47ce-bac6-29791c79a05e)
+შექმნილი მაქვს useSpotify.js hook რომლის მეშვეობითაც ხდება ავთენთიფიკაციის პროცესი. როდესაც Spotify გადმოამისამართებს იოუზერს ავტორიზაციის გავლის შემდეგ, URL-დან ვიღებთ ტოკენს რომელსაც ვინახავთ local storage-ში
+თუ იუზერი უკვე შესულია ტოკენი სთორიჯიდან მოაქვს რათა აღარ დაჭირდეს თავიდან ავთენთიფიკაციის გავლა (მაგრამ თუ ტოკენი არ მოიძებნა ისევ Spotify ავტორიზაციის გვერდზე გადაამისამართებს).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# TOOLS
+Frontend: React, React Router, Framer Motion, Axios
+Authentication: Spotify OAuth
+Styling: CSS
+Deployment: Vercel
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# FEATURES
+Dark/Light Mode Switch
+Responsive Design
+Spotify Authenticaiton
 
-### `npm test`
+# პროექტის ლოკალურად გაშვება
+კლონირება:
+ git clone https://github.com/your-username/final-spotify-react.git
+ cd final-spotify-react
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ დეფენდენციების ჩამოტვირთვა:
+ npm install
 
-### `npm run build`
+ .env ფაილში:
+  REACT_APP_SPOTIFY_CLIENT_ID=your_spotify_client_id.
+  REACT_APP_SPOTIFY_CLIENT_SECRET=your_spotify_client_secret.
+  REACT_APP_SPOTIFY_REDIRECT_URI=https://final-spotify-react.vercel.app/
+(ინფორმაცია client id, client secret - მოცემულია [Spotify Developer Das](https://developer.spotify.com/dashboard))
+![image](https://github.com/user-attachments/assets/1a26e64f-2401-408d-a58c-743d725e50ef)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+გაშვება:
+ npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Vercel Deployment
+დავფუშოთ github-ზე და დავაკკავშიროთ ჩვენი გითჰაბ repository- Vercel-ს.
+Vercel-ში უნდა დავაყენოთ environment variables:
+REACT_APP_SPOTIFY_CLIENT_ID
+REACT_APP_SPOTIFY_REDIRECT_URI
+(ინფორმაცია მოცემულია [Spotify Developer Das](https://developer.spotify.com/dashboard))
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+დაჰოსთვის შემდეგ დაგენერირებული URL ლინკი უნდა განვათავსოთ
+![image](https://github.com/user-attachments/assets/7bb31094-596d-4210-9a06-4535fdc357bb)
+Redirect URI-ში, რათა მოხდეს მანდ გადამისამართება სფოთფაის მიერ, როცა იუზერი გაივლის ავთენთიფიკაციას.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
