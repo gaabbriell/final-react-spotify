@@ -6,18 +6,21 @@ const useSpotify = () => {
 
   useEffect(() => {
     const tokenFromUrl = queryString.parse(window.location.hash).access_token;
+    console.log("Token from URL:", tokenFromUrl); 
 
     if (tokenFromUrl) {
       localStorage.setItem("spotify_token", tokenFromUrl);
       setToken(tokenFromUrl);
+      console.log("Token saved to localStorage:", tokenFromUrl);
 
-      // Remove token from URL for security
       window.history.replaceState({}, document.title, "/");
     } else {
       const savedToken = localStorage.getItem("spotify_token");
       if (savedToken) {
         setToken(savedToken);
+        console.log("Using saved token from localStorage:", savedToken);
       } else {
+        console.log("No token found. Redirecting to Spotify login...");
         const redirectUri = "https://gaabbriell.github.io/final-react-spotify";
         window.location.href = `https://accounts.spotify.com/authorize?response_type=token&client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&redirect_uri=${redirectUri}&scope=user-top-read`;
       }
