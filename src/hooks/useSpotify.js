@@ -17,7 +17,7 @@ const useSpotify = () => {
       if (savedToken) {
         setToken(savedToken);
       } else{
-        const redirectUri = "https://dazzling-paprenjak-848324.netlify.app/";
+        const redirectUri = "https://effulgent-halva-f25414.netlify.app/";
         window.location.href = `https://accounts.spotify.com/authorize?response_type=token&client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&redirect_uri=${redirectUri}&scope=user-top-read`;
       }
     }
