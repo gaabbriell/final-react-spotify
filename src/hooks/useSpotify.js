@@ -10,14 +10,14 @@ const useSpotify = () => {
     if (tokenFromUrl) {
       localStorage.setItem("spotify_token", tokenFromUrl);
       setToken(tokenFromUrl);
-      
-      window.history.replaceState({}, document.title, "/");
+
+      window.history.replaceState({}, document.title, window.location.pathname);
     } else {
       const savedToken = localStorage.getItem("spotify_token");
       if (savedToken) {
         setToken(savedToken);
-      } else {
-        const redirectUri = "https://gaabbriell.github.io/final-react-spotify";
+      } else{
+        const redirectUri = "https://dazzling-paprenjak-848324.netlify.app/";
         window.location.href = `https://accounts.spotify.com/authorize?response_type=token&client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&redirect_uri=${redirectUri}&scope=user-top-read`;
       }
     }
